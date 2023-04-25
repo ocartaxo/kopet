@@ -20,5 +20,11 @@ class TutorService(
     fun show(id: Int): TutorResponse = repository.findById(id)
         .orElseThrow { IllegalArgumentException("Tutor de id $id não está cadastrado na base!") }.toDTO()
 
+    fun update(request: TutorUpdateRequest): TutorResponse {
+        val t: Tutor = repository.findById(request.id).orElseThrow()
+        t.update(request)
+        return t.toDTO()
+    }
+
 
 }

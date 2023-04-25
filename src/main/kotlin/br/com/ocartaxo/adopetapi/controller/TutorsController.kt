@@ -2,10 +2,7 @@ package br.com.ocartaxo.adopetapi.controller
 
 
 
-import br.com.ocartaxo.adopetapi.domain.tutor.TutorRequest
-import br.com.ocartaxo.adopetapi.domain.tutor.TutorResponse
-import br.com.ocartaxo.adopetapi.domain.tutor.TutorService
-import br.com.ocartaxo.adopetapi.domain.tutor.TutorSummaryResponse
+import br.com.ocartaxo.adopetapi.domain.tutor.*
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
@@ -44,5 +41,10 @@ class TutorsController(private val service: TutorService) {
     @GetMapping("/{id}")
     @Cacheable("tutores")
     fun show(@PathVariable id: Int) = service.show(id)
+
+    @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
+    fun update(request: TutorUpdateRequest) = service.update(request)
+
+
 
 }
