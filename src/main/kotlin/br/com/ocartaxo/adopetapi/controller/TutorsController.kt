@@ -5,8 +5,14 @@ package br.com.ocartaxo.adopetapi.controller
 import br.com.ocartaxo.adopetapi.domain.tutor.TutorRequest
 import br.com.ocartaxo.adopetapi.domain.tutor.TutorResponse
 import br.com.ocartaxo.adopetapi.domain.tutor.TutorService
+import br.com.ocartaxo.adopetapi.domain.tutor.TutorSummaryResponse
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
+import org.springframework.cache.annotation.Cacheable
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.domain.Sort
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
@@ -28,5 +34,15 @@ class TutorsController(private val service: TutorService) {
 
         return ResponseEntity.created(uri).body(response)
     }
+
+    @GetMapping
+    @Cacheable("tutores")
+    fun list(
+        @PageableDefault(size=10, sort=["name"], direction= Sort.Direction.ASC) pageable: Pageable
+    ) = ResponseEntity.ok(service.list(pageable))
+
+    @GetMapping("/{id}")
+    @Cacheable("tutores")
+    fun show(@PathVariable id: Int) = service.show(id)
 
 }

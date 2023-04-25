@@ -18,3 +18,9 @@ fun TutorRequest.toEntity() = Tutor(
     email = this.email,
     password = this.password,
 )
+
+fun Tutor.toSummaryResponse() = TutorSummaryResponse(
+    id = this.id!!,
+    email = this.email,
+    name = this.name
+)
