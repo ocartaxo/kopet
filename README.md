@@ -8,6 +8,9 @@ interessados possam escolher um animal de estimação de acordo com sua preferê
 | :sparkles: Nome        | **Adopet-API**
 | :label: Tecnologias | Kotlin, Spring Boot, Spring JPA, PostgresSQL, Flyway, Lombok
 
+![banner](https://user-images.githubusercontent.com/23222759/234205632-f20fa8e9-3419-4f0c-95e7-631b3b9ce41e.png#vitrinedev)
+
+
 ## Detalhes do projeto
 
 Rotas HTTP para criar, exbir, atualizar e remover ([CRUD](https://pt.wikipedia.org/wiki/CRUD)) informações relacionadas a
