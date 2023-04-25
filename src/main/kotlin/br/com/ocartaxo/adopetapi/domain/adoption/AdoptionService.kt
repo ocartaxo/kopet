@@ -30,4 +30,6 @@ class AdoptionService(
         return adoption.toDTO()
     }
 
+    fun delete(id: Int) = adoptionsRepository.deleteById(id)
+
 }

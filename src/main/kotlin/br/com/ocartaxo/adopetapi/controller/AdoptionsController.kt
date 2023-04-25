@@ -6,10 +6,7 @@ import br.com.ocartaxo.adopetapi.domain.adoption.AdoptionService
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
@@ -28,4 +25,10 @@ class AdoptionsController(private val service: AdoptionService) {
 
     }
 
+    @DeleteMapping
+    @Transactional
+    fun deleteAdoption(id: Int): ResponseEntity<Unit> {
+        service.delete(id)
+        return ResponseEntity.noContent().build()
+    }
 }
