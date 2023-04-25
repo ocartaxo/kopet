@@ -3,6 +3,7 @@ package br.com.ocartaxo.adopetapi.controller
 import br.com.ocartaxo.adopetapi.domain.ShelterResponse
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterRequest
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterService
+import br.com.ocartaxo.adopetapi.domain.shelter.ShelterUpdateRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
@@ -36,5 +37,9 @@ class SheltersController(private val service: ShelterService) {
 
     @GetMapping("/{id}")
     fun show(@PathVariable id: Int) = ResponseEntity.ok(service.show(id))
+
+    @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
+    @Transactional
+    fun update(@RequestBody @Valid request: ShelterUpdateRequest) = ResponseEntity.ok(service.update(request))
 
 }

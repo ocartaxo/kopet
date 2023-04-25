@@ -24,3 +24,10 @@ fun Shelter.toSummaryDTO() = ShelterSummaryResponse(
     id = this.id!!,
     name = this.name
 )
+
+fun Shelter.update(newData: ShelterUpdateRequest) {
+    this.email = newData.email ?: this.email
+    this.phone = newData.phone ?: this.phone
+    this.name = newData.name ?: this.name
+    this.location = newData.location?.toEntity() ?: this.location
+}

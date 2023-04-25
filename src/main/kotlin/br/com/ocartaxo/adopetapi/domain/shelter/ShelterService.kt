@@ -16,4 +16,13 @@ class ShelterService(private val repository: ShelterRepository) {
     fun show(id: Int) = repository.findById(id)
         .orElseThrow { IllegalArgumentException("Abrigo de id $id não está cadastrado!") }.toDTO()
 
+    fun update(request: ShelterUpdateRequest): ShelterResponse {
+        val shelter = repository.findById(request.id)
+            .orElseThrow { IllegalArgumentException("Abrigo não encontrado!") }
+
+        shelter.update(request)
+
+        return shelter.toDTO()
+    }
+
 }
