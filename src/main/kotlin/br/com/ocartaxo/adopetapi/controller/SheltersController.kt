@@ -42,4 +42,11 @@ class SheltersController(private val service: ShelterService) {
     @Transactional
     fun update(@RequestBody @Valid request: ShelterUpdateRequest) = ResponseEntity.ok(service.update(request))
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    fun delete(id: Int): ResponseEntity<Unit> {
+        service.delete(id)
+        return ResponseEntity.noContent().build()
+    }
+
 }
