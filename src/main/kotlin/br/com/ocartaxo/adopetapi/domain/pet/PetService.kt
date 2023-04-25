@@ -7,20 +7,20 @@ import org.springframework.stereotype.Service
 
 @Service
 class PetService(
-    private val petRepository: PetRepository,
+    private val petsRepository: PetsRepository,
     private val shelterRepository: ShelterRepository
 ) {
     fun register(request: PetRequest): PetResponse {
         val shelter = shelterRepository.findById(request.shelterId).orElseThrow { RuntimeException() }
         val pet = request.toEntity(shelter)
 
-        return petRepository.save(pet).toDTO()
+        return petsRepository.save(pet).toDTO()
     }
 
-    fun list(pageable: Pageable) = petRepository.findAllByAdoptedIsFalse(pageable).map(Pet::toSummaryDTO)
-    fun show(id: Int) = petRepository.findById(id).orElseThrow { RuntimeException("Pet de id '$id' não encontrado!") }.toDTO()
+    fun list(pageable: Pageable) = petsRepository.findAllByAdoptedIsFalse(pageable).map(Pet::toSummaryDTO)
+    fun show(id: Int) = petsRepository.findById(id).orElseThrow { RuntimeException("Pet de id '$id' não encontrado!") }.toDTO()
     fun update(request: PetUpdateRequest): PetResponse {
-        val pet = petRepository.findById(request.id)
+        val pet = petsRepository.findById(request.id)
             .orElseThrow { RuntimeException("Pet não encontrado!") }
 
         val shelter = shelterRepository.findByIdOrNull(request.shelterId)
@@ -30,7 +30,7 @@ class PetService(
         return pet.toDTO()
     }
 
-    fun delete(id: Int) = petRepository.deleteById(id)
+    fun delete(id: Int) = petsRepository.deleteById(id)
 
 
 }
