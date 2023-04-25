@@ -26,5 +26,7 @@ class TutorService(
         return t.toDTO()
     }
 
+    fun delete(id: Int) = repository.deleteById(id)
+
 
 }

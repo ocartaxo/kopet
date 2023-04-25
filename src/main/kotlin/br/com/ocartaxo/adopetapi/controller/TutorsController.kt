@@ -43,8 +43,13 @@ class TutorsController(private val service: TutorService) {
     fun show(@PathVariable id: Int) = service.show(id)
 
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
+    @Transactional
     fun update(request: TutorUpdateRequest) = service.update(request)
 
-
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable id: Int): ResponseEntity<Unit> {
+        service.delete(id)
+        return ResponseEntity.noContent().build()
+    }
 
 }
