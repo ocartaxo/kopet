@@ -2,6 +2,7 @@ package br.com.ocartaxo.adopetapi.controller
 
 import br.com.ocartaxo.adopetapi.domain.pet.PetRequest
 import br.com.ocartaxo.adopetapi.domain.pet.PetService
+import br.com.ocartaxo.adopetapi.domain.pet.PetUpdateRequest
 import jakarta.transaction.Transactional
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
@@ -36,4 +37,7 @@ class PetsController(private val service: PetService) {
     @Cacheable("pets")
     fun show(@PathVariable id: Int) = ResponseEntity.ok(service.show(id))
 
+    @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
+    @Transactional
+    fun update(@RequestBody request: PetUpdateRequest) = ResponseEntity.ok(service.update(request))
 }

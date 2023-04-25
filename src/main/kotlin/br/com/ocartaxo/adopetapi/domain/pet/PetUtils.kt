@@ -28,3 +28,15 @@ fun Pet.toSummaryDTO() = PetSummaryResponse(
     id = this.id!!,
     name = this.name
 )
+
+fun Pet.update(newPetInfo: PetUpdateRequest, shelter: Shelter?) {
+    this.age = newPetInfo.age ?: this.age
+    this.shelter = shelter ?: this.shelter
+    this.name = newPetInfo.name ?: this.name
+    this.size = newPetInfo.size ?: this.size
+    this.image = newPetInfo.image ?: this.image
+    this.specie = newPetInfo.specie ?: this.specie
+    this.adopted = newPetInfo.adopted ?: this.adopted
+    this.description = newPetInfo.description ?: this.description
+
+}
