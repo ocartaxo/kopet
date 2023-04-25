@@ -23,3 +23,8 @@ fun Pet.toDTO() = PetResponse(
     image = this.image,
     adopeted = this.adopted
 )
+
+fun Pet.toSummaryDTO() = PetSummaryResponse(
+    id = this.id!!,
+    name = this.name
+)
