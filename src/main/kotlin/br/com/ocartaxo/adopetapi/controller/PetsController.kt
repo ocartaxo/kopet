@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
@@ -40,4 +41,11 @@ class PetsController(private val service: PetService) {
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
     @Transactional
     fun update(@RequestBody request: PetUpdateRequest) = ResponseEntity.ok(service.update(request))
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    fun delete(@PathVariable id: Int): ResponseEntity<Unit>{
+        service.delete(id)
+        return ResponseEntity.noContent().build()
+    }
 }

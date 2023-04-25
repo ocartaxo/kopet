@@ -30,5 +30,7 @@ class PetService(
         return pet.toDTO()
     }
 
+    fun delete(id: Int) = petRepository.deleteById(id)
+
 
 }
