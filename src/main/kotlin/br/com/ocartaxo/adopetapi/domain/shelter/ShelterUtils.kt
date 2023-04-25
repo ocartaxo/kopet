@@ -19,3 +19,8 @@ fun Shelter.toDTO() = ShelterResponse(
     location = this.location.toDTO(),
     createdOn = this.createdOn
 )
+
+fun Shelter.toSummaryDTO() = ShelterSummaryResponse(
+    id = this.id!!,
+    name = this.name
+)
