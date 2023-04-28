@@ -3,9 +3,13 @@ package br.com.ocartaxo.adopetapi.domain.tutor
 import br.com.ocartaxo.adopetapi.domain.location.Location
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.core.userdetails.UserDetails
 import java.time.LocalDateTime
 
 @Entity
+@Table(name="tutores")
 @NoArgsConstructor
 data class Tutor(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
