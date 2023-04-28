@@ -1,6 +1,5 @@
 package br.com.ocartaxo.adopetapi.domain.shelter
 
-import br.com.ocartaxo.adopetapi.domain.ShelterResponse
 import br.com.ocartaxo.adopetapi.domain.location.toDTO
 import br.com.ocartaxo.adopetapi.domain.location.toEntity
 

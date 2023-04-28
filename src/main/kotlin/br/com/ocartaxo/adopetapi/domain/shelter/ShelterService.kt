@@ -1,6 +1,5 @@
 package br.com.ocartaxo.adopetapi.domain.shelter
 
-import br.com.ocartaxo.adopetapi.domain.ShelterResponse
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service

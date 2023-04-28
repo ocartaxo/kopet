@@ -1,4 +1,4 @@
-package br.com.ocartaxo.adopetapi.domain
+package br.com.ocartaxo.adopetapi.domain.shelter
 
 import br.com.ocartaxo.adopetapi.domain.location.LocationDTO
 import com.fasterxml.jackson.annotation.JsonProperty

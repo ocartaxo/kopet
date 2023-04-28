@@ -1,6 +1,6 @@
 package br.com.ocartaxo.adopetapi.controller
 
-import br.com.ocartaxo.adopetapi.domain.ShelterResponse
+import br.com.ocartaxo.adopetapi.domain.shelter.ShelterResponse
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterRequest
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterService
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterUpdateRequest
