@@ -6,6 +6,7 @@ import jakarta.persistence.*
 import lombok.NoArgsConstructor
 
 @Entity
+@Table(name="pets")
 @NoArgsConstructor
 data class Pet(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor
 import java.time.LocalDateTime
 
 @Entity
-@Table(name="adocao")
+@Table(name="adocoes")
 @NoArgsConstructor
 data class Adoption(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

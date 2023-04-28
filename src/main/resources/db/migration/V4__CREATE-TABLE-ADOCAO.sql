@@ -1,4 +1,4 @@
-CREATE TABLE adocao
+CREATE TABLE adocoes
 (
     id   SERIAL NOT NULL,
     date TIMESTAMP NOT NULL,
