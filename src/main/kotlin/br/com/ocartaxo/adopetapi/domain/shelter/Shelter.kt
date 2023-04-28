@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "abrigo")
+@Table(name = "abrigos")
 @NoArgsConstructor
 data class Shelter(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,6 @@ data class Shelter(
     @Embedded
     var location: Location,
 
-    var enabled: Boolean = true,
     val createdOn: LocalDateTime = LocalDateTime.now()
 
 )
