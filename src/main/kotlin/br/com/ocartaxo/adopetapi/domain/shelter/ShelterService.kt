@@ -25,9 +25,6 @@ class ShelterService(private val repository: ShelterRepository) {
         return shelter.toDTO()
     }
 
-    fun delete(id: Int) {
-        val shelter = repository.findByIdOrNull(id)
-        shelter?.disable()
-    }
+    fun delete(id: Int) = repository.deleteById(id)
 
 }

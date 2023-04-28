@@ -44,7 +44,7 @@ class SheltersController(private val service: ShelterService) {
 
     @DeleteMapping("/{id}")
     @Transactional
-    fun delete(id: Int): ResponseEntity<Unit> {
+    fun delete(@PathVariable id: Int): ResponseEntity<Unit> {
         service.delete(id)
         return ResponseEntity.noContent().build()
     }

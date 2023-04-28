@@ -30,7 +30,3 @@ fun Shelter.update(newInfo: ShelterUpdateRequest) {
     this.name = newInfo.name ?: this.name
     this.location = newInfo.location?.toEntity() ?: this.location
 }
-
-fun Shelter.disable() {
-    this.enabled = false
-}
