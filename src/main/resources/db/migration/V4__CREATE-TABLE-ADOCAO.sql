@@ -7,6 +7,6 @@ CREATE TABLE adocoes
     tutor_id SERIAL NOT NULL,
 
     PRIMARY KEY(id),
-    FOREIGN KEY(pet_id) REFERENCES pet(id),
-    FOREIGN KEY(tutor_id) REFERENCES tutor(id)
+    FOREIGN KEY(pet_id) REFERENCES pets(id),
+    FOREIGN KEY(tutor_id) REFERENCES tutores(id)
 )
