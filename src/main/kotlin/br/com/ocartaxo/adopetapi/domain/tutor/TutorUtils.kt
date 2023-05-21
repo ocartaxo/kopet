@@ -2,11 +2,14 @@ package br.com.ocartaxo.adopetapi.domain.tutor
 
 import br.com.ocartaxo.adopetapi.domain.location.toDTO
 import br.com.ocartaxo.adopetapi.domain.location.toEntity
+import br.com.ocartaxo.adopetapi.domain.user.Profile
+import br.com.ocartaxo.adopetapi.domain.user.ProfileType
+import br.com.ocartaxo.adopetapi.domain.user.User
 
 fun Tutor.toDTO() = TutorResponse(
     id = this.id!!,
     name = this.name,
-    email = this.email,
+    email = this.user.email,
     phone = this.phone,
     location = this.location?.toDTO(),
     about = this.about,
@@ -16,20 +19,19 @@ fun Tutor.toDTO() = TutorResponse(
 
 fun TutorRequest.toEntity() = Tutor(
     name = this.name,
-    email = this.email,
-    password = this.password,
+    user = User(email = this.email, password = this.password, profile = Profile(type = ProfileType.TUTOR))
 )
 
 fun Tutor.toSummaryResponse() = TutorSummaryResponse(
     id = this.id!!,
-    email = this.email,
+    email = this.user.email,
     name = this.name
 )
 
 fun Tutor.update(newData: TutorUpdateRequest) {
     this.name = newData.name ?: this.name
-    this.email = newData.email ?: this.email
-    this.password = newData.password ?: this.password
+    this.user.email = newData.email ?: this.user.email
+    this.user.password = newData.password ?: this.user.password
     this.location = newData.location?.toEntity() ?: this.location
     this.phone = newData.phone ?: this.phone
     this.about = newData.about ?: this.about

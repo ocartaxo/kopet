@@ -1,23 +1,27 @@
 package br.com.ocartaxo.adopetapi.domain.shelter
 
+import br.com.ocartaxo.adopetapi.domain.token.Token
+import br.com.ocartaxo.adopetapi.domain.user.ProfileType
+import br.com.ocartaxo.adopetapi.infra.security.JwtService
 import org.springframework.data.domain.Pageable
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class ShelterService(private val repository: ShelterRepository) {
+class ShelterService(
+    private val shelterRepository: ShelterRepository,
+    private val jwtService: JwtService,
+) {
     fun register(request: ShelterRequest): ShelterResponse {
         val shelter = request.toEntity()
-        repository.save(shelter)
         return shelter.toDTO()
     }
 
-    fun list(pageable: Pageable) = repository.findAllByEnabledIsTrue(pageable).map(Shelter::toSummaryDTO)
-    fun show(id: Int) = repository.findById(id)
+    fun list(pageable: Pageable) = shelterRepository.findAll(pageable).map(Shelter::toSummaryDTO)
+    fun show(id: Int) = shelterRepository.findById(id)
         .orElseThrow { IllegalArgumentException("Abrigo de id $id não está cadastrado!") }.toDTO()
 
     fun update(request: ShelterUpdateRequest): ShelterResponse {
-        val shelter = repository.findById(request.id)
+        val shelter = shelterRepository.findById(request.id)
             .orElseThrow { IllegalArgumentException("Abrigo não encontrado!") }
 
         shelter.update(request)
@@ -25,6 +29,7 @@ class ShelterService(private val repository: ShelterRepository) {
         return shelter.toDTO()
     }
 
-    fun delete(id: Int) = repository.deleteById(id)
+    fun delete(id: Int) = shelterRepository.deleteById(id)
+
 
 }

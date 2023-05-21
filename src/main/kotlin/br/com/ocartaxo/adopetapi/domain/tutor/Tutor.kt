@@ -1,6 +1,7 @@
 package br.com.ocartaxo.adopetapi.domain.tutor
 
 import br.com.ocartaxo.adopetapi.domain.location.Location
+import br.com.ocartaxo.adopetapi.domain.user.User
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
 import org.springframework.security.core.GrantedAuthority
@@ -15,8 +16,6 @@ data class Tutor(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null,
     var name: String,
-    var email: String,
-    var password: String,
 
     var createdOn: LocalDateTime = LocalDateTime.now(),
 
@@ -25,5 +24,7 @@ data class Tutor(
     var image: String? = null,
 
     @Embedded
-    var location: Location? = null
+    var location: Location? = null,
+    @OneToOne
+    val user: User
 )

@@ -6,7 +6,6 @@ import java.time.LocalDateTime
 
 data class ShelterResponse(
     val id: Int,
-    val email: String,
     @JsonProperty("phone")
     val phone: String,
     @JsonProperty("nome")

@@ -14,6 +14,9 @@ data class ShelterRequest(
     @NotBlank
     @Email
     val email: String,
+    @NotBlank
+    @JsonProperty("senha")
+    val password: String,
     @Phone
     @NotBlank
     @JsonProperty("telefone")

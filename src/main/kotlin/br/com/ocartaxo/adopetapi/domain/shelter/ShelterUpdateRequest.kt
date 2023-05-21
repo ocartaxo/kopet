@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class ShelterUpdateRequest(
     val id: Int,
     val email: String? = null,
+    @JsonProperty("senha")
+    val password: String? = null,
     @JsonProperty("telefone")
     val phone: String? = null,
     @JsonProperty("nome")
