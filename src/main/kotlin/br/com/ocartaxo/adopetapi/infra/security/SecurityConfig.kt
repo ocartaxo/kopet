@@ -2,6 +2,7 @@ package br.com.ocartaxo.adopetapi.infra.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -22,7 +23,11 @@ class SecurityConfig(
 
         http.csrf().disable()
             .sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
-            .authorizeHttpRequests { request -> request.requestMatchers("/authenticate/**").permitAll() }
+            .authorizeHttpRequests { request ->
+                request.requestMatchers(HttpMethod.POST, "/authenticate").permitAll()
+                request.requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
+                request.requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTORES")
+            }
             .authorizeHttpRequests().anyRequest().authenticated().and()
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
 
