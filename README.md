@@ -3,6 +3,9 @@
 O objetivo final deste projeto é facilitar a adoção de pets através de uma plataforma web na qual tutores interessados
 possam escolher um animal de estimação cadastrados na plataforma de acordo com sua preferências e necessidades.
 
+![Banner](https://github.com/ocartaxo/kopet/assets/23222759/eb32993a-3d2c-49fb-b5b4-d8ba3f5e14c7#vitrinedev)
+
+
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **Adopet-API**
