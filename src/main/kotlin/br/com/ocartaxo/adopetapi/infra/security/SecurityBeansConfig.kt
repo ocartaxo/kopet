@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 
 @Configuration
-class AppAuthenticationConfig(
+class SecurityBeansConfig(
     private val repository: UsersRepository
 ) {
 
