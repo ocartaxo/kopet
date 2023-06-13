@@ -1,5 +1,8 @@
 # Adopet-API
 
+![Banner](https://github.com/ocartaxo/kopet/assets/23222759/eb32993a-3d2c-49fb-b5b4-d8ba3f5e14c7#vitrinedev)
+
+
 Este projeto tem como objetivo facilitar a adoção de pets através de uma plataforma web na qual tutores
 interessados possam escolher um animal de estimação de acordo com sua preferências e necessidades.
 
