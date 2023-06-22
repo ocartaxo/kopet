@@ -28,7 +28,7 @@ class AuthenticationService(
 
 
         val user = usersRepository.findByEmail(request.username)
-            .orElseThrow { IllegalArgumentException("Login ou senha incorretos!") }
+            .orElseThrow { IllegalArgumentException("Login e/ou senha incorretos!") }
 
         user.password = passwordEncoder.encode(request.password)
 
@@ -51,6 +51,7 @@ class AuthenticationService(
 
     private fun saveToken(user: User, jwtToken: String) {
         val token = Token(user = user, tokenValue = jwtToken)
+        user.addToken(token)
         tokenRepository.save(token)
     }
 
