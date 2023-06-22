@@ -1,8 +1,3 @@
-CREATE TABLE perfis
-(
-    id   SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
 
 
 CREATE TABLE usuarios
@@ -10,7 +5,7 @@ CREATE TABLE usuarios
     id       SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password varchar(255) NOT NULL,
-    profile SERIAL NOT NULL REFERENCES perfis(id)
+    profile VARCHAR NOT NULL
 );
 
 CREATE TABLE tokens
