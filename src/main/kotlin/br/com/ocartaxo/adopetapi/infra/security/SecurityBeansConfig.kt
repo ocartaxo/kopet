@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 
+typealias AuthConfig=AuthenticationConfiguration
+
 @Configuration
 class SecurityBeansConfig(
     private val repository: UsersRepository
@@ -36,7 +38,7 @@ class SecurityBeansConfig(
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
 
     @Bean
-    fun authenticationManager(config: AuthenticationConfiguration): AuthenticationManager{
+    fun authenticationManager(config: AuthConfig): AuthenticationManager{
         return config.authenticationManager
     }
 }
