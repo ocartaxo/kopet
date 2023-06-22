@@ -21,7 +21,7 @@ class SecurityConfig(
         "/v3/api-docs/**",
         "/swagger-ui.html",
         "/swagger-ui/**",
-        "/authenticate"
+        "/authenticate/**"
     )
 
     @Bean
@@ -33,7 +33,6 @@ class SecurityConfig(
                 request.requestMatchers(*allowedURIs).permitAll()
                 request.requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
                 request.requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTORES")
-
 
             }
             .authorizeHttpRequests().anyRequest().authenticated().and()
