@@ -3,6 +3,7 @@ package br.com.ocartaxo.adopetapi.controller
 import br.com.ocartaxo.adopetapi.domain.adoption.AdoptionRequest
 import br.com.ocartaxo.adopetapi.domain.adoption.AdoptionResponse
 import br.com.ocartaxo.adopetapi.domain.adoption.AdoptionService
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
@@ -11,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("/api/adocoes")
+@SecurityRequirement(name = "bearer-key")
 class AdoptionsController(private val service: AdoptionService) {
 
     @PostMapping

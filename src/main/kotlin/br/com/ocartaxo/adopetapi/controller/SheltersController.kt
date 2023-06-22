@@ -4,6 +4,7 @@ import br.com.ocartaxo.adopetapi.domain.shelter.ShelterResponse
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterRequest
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterService
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterUpdateRequest
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
@@ -14,8 +15,9 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
-@RequestMapping("/api/abrigos")
 @RestController
+@RequestMapping("/api/abrigos")
+@SecurityRequirement(name = "bearer-key")
 class SheltersController(private val service: ShelterService) {
 
     @PostMapping

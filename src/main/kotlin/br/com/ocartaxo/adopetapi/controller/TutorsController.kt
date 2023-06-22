@@ -3,6 +3,7 @@ package br.com.ocartaxo.adopetapi.controller
 
 
 import br.com.ocartaxo.adopetapi.domain.tutor.*
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder
 
 @RestController
 @RequestMapping("/api/tutores")
+@SecurityRequirement(name = "bearer-key")
 class TutorsController(private val service: TutorService) {
 
     @PostMapping
