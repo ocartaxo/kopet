@@ -2,15 +2,14 @@ package br.com.ocartaxo.adopetapi.domain.shelter
 
 import br.com.ocartaxo.adopetapi.domain.location.toDTO
 import br.com.ocartaxo.adopetapi.domain.location.toEntity
-import br.com.ocartaxo.adopetapi.domain.user.Profile
-import br.com.ocartaxo.adopetapi.domain.user.ProfileType
+import br.com.ocartaxo.adopetapi.domain.user.Role
 import br.com.ocartaxo.adopetapi.domain.user.User
 
 fun ShelterRequest.toEntity() = Shelter(
     name = this.name,
     phone = this.phone,
     location = this.location.toEntity(),
-    user = User(email = this.email, password = this.password, profile = Profile(type = ProfileType.SHELTER))
+    user = User(email = this.email, password = this.password, role = Role.SHELTER)
 )
 
 

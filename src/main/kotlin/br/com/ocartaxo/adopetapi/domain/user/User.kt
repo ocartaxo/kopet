@@ -17,13 +17,13 @@ data class User(
     @get:JvmName("userPassword")
     var password: String,
 
-    @OneToOne
-    val profile: Profile,
+    @Enumerated(value = EnumType.STRING)
+    val role: Role,
     @OneToMany(mappedBy = "user")
     val tokens: MutableList<Token> = mutableListOf()
 
 ) : UserDetails {
-    override fun getAuthorities(): MutableCollection<out GrantedAuthority> = mutableListOf(profile)
+    override fun getAuthorities(): Collection<GrantedAuthority> = role.authorities()
     override fun getPassword() = this.email
 
     override fun getUsername() = this.password

@@ -2,8 +2,7 @@ package br.com.ocartaxo.adopetapi.domain.tutor
 
 import br.com.ocartaxo.adopetapi.domain.location.toDTO
 import br.com.ocartaxo.adopetapi.domain.location.toEntity
-import br.com.ocartaxo.adopetapi.domain.user.Profile
-import br.com.ocartaxo.adopetapi.domain.user.ProfileType
+import br.com.ocartaxo.adopetapi.domain.user.Role
 import br.com.ocartaxo.adopetapi.domain.user.User
 
 fun Tutor.toDTO() = TutorResponse(
@@ -19,7 +18,7 @@ fun Tutor.toDTO() = TutorResponse(
 
 fun TutorRequest.toEntity() = Tutor(
     name = this.name,
-    user = User(email = this.email, password = this.password, profile = Profile(type = ProfileType.TUTOR))
+    user = User(email = this.email, password = this.password, role = Role.TUTOR)
 )
 
 fun Tutor.toSummaryResponse() = TutorSummaryResponse(

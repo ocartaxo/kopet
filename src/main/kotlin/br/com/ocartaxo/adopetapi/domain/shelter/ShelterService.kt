@@ -1,7 +1,5 @@
 package br.com.ocartaxo.adopetapi.domain.shelter
 
-import br.com.ocartaxo.adopetapi.domain.token.Token
-import br.com.ocartaxo.adopetapi.domain.user.ProfileType
 import br.com.ocartaxo.adopetapi.infra.security.JwtService
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
