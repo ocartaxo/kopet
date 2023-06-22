@@ -27,6 +27,9 @@ class SecurityConfig(
                 request.requestMatchers(HttpMethod.POST, "/authenticate").permitAll()
                 request.requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
                 request.requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTORES")
+                // Swagger
+                request.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
+
             }
             .authorizeHttpRequests().anyRequest().authenticated().and()
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
