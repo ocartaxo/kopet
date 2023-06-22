@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
@@ -15,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder
 @SecurityRequirement(name = "bearer-key")
 class AdoptionsController(private val service: AdoptionService) {
 
+    @PreAuthorize("hasAuthority('adocao:registrar')")
     @PostMapping
     @Transactional
     fun adopt(
@@ -27,6 +29,7 @@ class AdoptionsController(private val service: AdoptionService) {
 
     }
 
+    @PreAuthorize("hasAuthority('abrigo:deletar')")
     @DeleteMapping
     @Transactional
     fun deleteAdoption(id: Int): ResponseEntity<Unit> {

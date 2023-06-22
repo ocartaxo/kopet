@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
@@ -20,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder
 @SecurityRequirement(name = "bearer-key")
 class SheltersController(private val service: ShelterService) {
 
+    @PreAuthorize("hasAuthority('abrigo:registrar')")
     @PostMapping
     @Transactional
     fun register(
@@ -40,10 +42,12 @@ class SheltersController(private val service: ShelterService) {
     @GetMapping("/{id}")
     fun show(@PathVariable id: Int) = ResponseEntity.ok(service.show(id))
 
+    @PreAuthorize("hasAuthority('abrigo:atualizar')")
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
     @Transactional
     fun update(@RequestBody @Valid request: ShelterUpdateRequest) = ResponseEntity.ok(service.update(request))
 
+    @PreAuthorize("hasAuthority('abrigo:deletar')")
     @DeleteMapping("/{id}")
     @Transactional
     fun delete(@PathVariable id: Int): ResponseEntity<Unit> {
