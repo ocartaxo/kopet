@@ -1,6 +1,5 @@
 package br.com.ocartaxo.adopetapi.infra.security
 
-import br.com.ocartaxo.adopetapi.domain.token.Token
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -23,6 +22,7 @@ class JwtService(
 ) {
 
     private val signInKey = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey))
+    private val issuer = "API Adopet"
 
     fun extractUsername(token: String): String {
         return extractClaims(token, Claims::getSubject)
@@ -64,6 +64,7 @@ class JwtService(
 
         return Jwts
             .builder()
+            .setIssuer(issuer)
             .setClaims(extraClaims)
             .setSubject(userDetails.username)
             .setIssuedAt(Date(System.currentTimeMillis()))
@@ -87,6 +88,7 @@ class JwtService(
     ): Claims {
         return Jwts
             .parserBuilder()
+            .requireIssuer(issuer)
             .setSigningKey(signInKey)
             .build()
             .parseClaimsJws(token)
