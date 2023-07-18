@@ -4,6 +4,7 @@ import br.com.ocartaxo.adopetapi.domain.pet.PetRequest
 import br.com.ocartaxo.adopetapi.domain.pet.PetService
 import br.com.ocartaxo.adopetapi.domain.pet.PetUpdateRequest
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.transaction.Transactional
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
@@ -15,6 +16,7 @@ import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
+@Tag(name="Pets", description = "CRUD para pets")
 @RestController
 @RequestMapping("/api/pets")
 class PetsController(private val service: PetService) {

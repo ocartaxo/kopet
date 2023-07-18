@@ -5,6 +5,7 @@ import br.com.ocartaxo.adopetapi.domain.shelter.ShelterRequest
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterService
 import br.com.ocartaxo.adopetapi.domain.shelter.ShelterUpdateRequest
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
@@ -16,6 +17,7 @@ import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
+@Tag(name="Abrigos", description = "CRUD para abrigos")
 @RestController
 @RequestMapping("/api/abrigos")
 @SecurityRequirement(name = "bearer-key")
