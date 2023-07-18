@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 
 @Component
-@Slf4j
 class JwtAuthenticationFilter(
     private val jwtService: JwtService,
     private val userDetailsService: UserDetailsService
@@ -47,8 +46,11 @@ class JwtAuthenticationFilter(
 
         }
 
-        val isAuthenticated = if (context.authentication.isAuthenticated) "SIM" else "NÃO"
-        logger.info("Usuário está autenticado? $isAuthenticated")
+        val authentication = context?.authentication
+        val isAuthenticated = if (authentication != null && authentication.isAuthenticated) "SIM" else "NÃO"
+        logger.info("Usuário está logado? $isAuthenticated")
+
+
         filterChain.doFilter(request, response)
     }
 
@@ -57,6 +59,5 @@ class JwtAuthenticationFilter(
 
         return header?.replace("Bearer ", "")
     }
-
 
 }
