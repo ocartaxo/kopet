@@ -4,6 +4,7 @@ package br.com.ocartaxo.adopetapi.controller
 
 import br.com.ocartaxo.adopetapi.domain.tutor.*
 import io.swagger.v3.oas.annotations.security.SecurityRequirement
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
@@ -16,9 +17,9 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 
 
+@Tag(name = "Tutores", description = "CRUD para tutores")
 @RestController
 @RequestMapping("/api/tutores")
-@PreAuthorize("hasRole('TUTOR')")
 @SecurityRequirement(name = "bearer-key")
 class TutorsController(private val service: TutorService) {
 
@@ -41,14 +42,17 @@ class TutorsController(private val service: TutorService) {
         @PageableDefault(size=10, sort=["name"], direction= Sort.Direction.ASC) pageable: Pageable
     ) = ResponseEntity.ok(service.list(pageable))
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     @Cacheable("tutores")
     fun show(@PathVariable id: Int) = service.show(id)
 
-    @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
     @Transactional
+    @PreAuthorize("hasRole('TUTOR')")
+    @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
     fun update(request: TutorUpdateRequest) = service.update(request)
 
+    @PreAuthorize("hasRole('TUTOR')")
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Int): ResponseEntity<Unit> {
         service.delete(id)
