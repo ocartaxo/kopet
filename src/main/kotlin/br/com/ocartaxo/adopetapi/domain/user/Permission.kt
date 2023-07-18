@@ -1,8 +1,5 @@
 package br.com.ocartaxo.adopetapi.domain.user
 
-import lombok.RequiredArgsConstructor
-
-@RequiredArgsConstructor
 enum class Permission(val permission: String) {
 
     // Tutores
