@@ -2,14 +2,16 @@ package br.com.ocartaxo.adopetapi.infra.security
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.Ordered
+import org.springframework.core.annotation.Order
 import org.springframework.http.HttpMethod
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import kotlin.jvm.Throws
 
 
 @Configuration
@@ -19,25 +21,31 @@ class SecurityConfig(
     private val jwtAuthenticationFilter: JwtAuthenticationFilter
 ) {
 
-    private val allowedURIs = arrayOf(
+    private val SWAGGER_WHITELIST = arrayOf(
         "/v3/api-docs/**",
         "/swagger-ui.html",
         "/swagger-ui/**",
-        "/authenticate/**"
+    )
+
+    private val POST_WHITELIST = arrayOf(
+        "/api/tutores",
+        "/api/abrigos",
+        "/api/authenticate"
     )
 
     @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    @Throws(Exception::class)
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
 
         http.csrf().disable()
             .sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests { request ->
-                request.requestMatchers(*allowedURIs).permitAll()
-                request.requestMatchers(HttpMethod.POST, "/abrigos").hasRole("ABRIGO")
-                request.requestMatchers(HttpMethod.POST, "/tutores").hasRole("TUTOR")
+                request.requestMatchers(*SWAGGER_WHITELIST).permitAll()
+                request.requestMatchers(*POST_WHITELIST).permitAll()
 
+                request.anyRequest().authenticated()
             }
-            .authorizeHttpRequests().anyRequest().authenticated().and()
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
 
 
