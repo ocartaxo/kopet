@@ -15,6 +15,6 @@ spring:
 
   flyway:
     driver-class-name: org.postgresql.Driver
-    user: postgres
-    password: A9&L4;Mb#
+    user: ${DB_NAME}
+    password: ${DB_PASSWORD}
     url: jdbc:postgresql://localhost:5432/adopet
