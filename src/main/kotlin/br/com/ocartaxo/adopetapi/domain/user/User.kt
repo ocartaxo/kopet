@@ -17,9 +17,10 @@ data class User(
     @get:JvmName("userPassword")
     var password: String,
 
+    @Column(name="profile")
     @Enumerated(value = EnumType.STRING)
     val role: Role,
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = [CascadeType.REMOVE])
     val tokens: MutableList<Token> = mutableListOf()
 
 ) : UserDetails {
