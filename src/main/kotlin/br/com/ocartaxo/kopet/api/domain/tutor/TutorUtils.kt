@@ -1,7 +1,7 @@
 package br.com.ocartaxo.kopet.api.domain.tutor
 
-import br.com.ocartaxo.api.domain.location.toDTO
-import br.com.ocartaxo.api.domain.location.toEntity
+import br.com.ocartaxo.kopet.api.domain.location.toDTO
+import br.com.ocartaxo.kopet.api.domain.location.toEntity
 
 fun Tutor.toDTO() = TutorResponse(
     id = this.id!!,

@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.adoption
 
-import br.com.ocartaxo.api.domain.pet.Pet
+import br.com.ocartaxo.kopet.api.domain.pet.Pet
 
 fun br.com.ocartaxo.kopet.api.domain.adoption.Adoption.toDTO() =
     br.com.ocartaxo.kopet.api.domain.adoption.AdoptionResponse(

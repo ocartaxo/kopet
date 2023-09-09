@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.shelter
 
-import br.com.ocartaxo.api.domain.location.LocationDTO
+import br.com.ocartaxo.kopet.api.domain.location.LocationDTO
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class ShelterUpdateRequest(

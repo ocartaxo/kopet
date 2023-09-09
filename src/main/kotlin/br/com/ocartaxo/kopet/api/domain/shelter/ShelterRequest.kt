@@ -1,7 +1,7 @@
 package br.com.ocartaxo.kopet.api.domain.shelter
 
 import br.com.alura.challenge.adopet.infra.annotations.Phone
-import br.com.ocartaxo.api.domain.location.LocationDTO
+import br.com.ocartaxo.kopet.api.domain.location.LocationDTO
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank

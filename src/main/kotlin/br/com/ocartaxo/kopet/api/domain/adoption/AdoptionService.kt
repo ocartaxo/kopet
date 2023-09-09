@@ -1,7 +1,7 @@
 package br.com.ocartaxo.kopet.api.domain.adoption
 
-import br.com.ocartaxo.api.domain.pet.PetsRepository
-import br.com.ocartaxo.api.domain.tutor.TutorsRepository
+import br.com.ocartaxo.kopet.api.domain.pet.PetsRepository
+import br.com.ocartaxo.kopet.api.domain.tutor.TutorsRepository
 import org.springframework.stereotype.Service
 
 @Service

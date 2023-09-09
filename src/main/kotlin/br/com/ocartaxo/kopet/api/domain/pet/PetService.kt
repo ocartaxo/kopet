@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.pet
 
-import br.com.ocartaxo.api.domain.shelter.ShelterRepository
+import br.com.ocartaxo.kopet.api.domain.shelter.ShelterRepository
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service

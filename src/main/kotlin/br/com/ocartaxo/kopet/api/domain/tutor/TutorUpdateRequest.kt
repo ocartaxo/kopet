@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.tutor
 
-import br.com.ocartaxo.api.domain.location.LocationDTO
+import br.com.ocartaxo.kopet.api.domain.location.LocationDTO
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.NotNull
 

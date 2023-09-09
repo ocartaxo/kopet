@@ -2,7 +2,7 @@ package br.com.ocartaxo.kopet.api.controller
 
 
 
-import br.com.ocartaxo.api.domain.tutor.*
+import br.com.ocartaxo.kopet.api.domain.tutor.*
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable

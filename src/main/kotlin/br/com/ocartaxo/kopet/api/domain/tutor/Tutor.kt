@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.tutor
 
-import br.com.ocartaxo.api.domain.location.Location
+import br.com.ocartaxo.kopet.api.domain.location.Location
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
 import java.time.LocalDateTime

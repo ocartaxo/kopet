@@ -1,9 +1,9 @@
 package br.com.ocartaxo.kopet.api.controller
 
-import br.com.ocartaxo.api.domain.shelter.ShelterResponse
-import br.com.ocartaxo.api.domain.shelter.ShelterRequest
-import br.com.ocartaxo.api.domain.shelter.ShelterService
-import br.com.ocartaxo.api.domain.shelter.ShelterUpdateRequest
+import br.com.ocartaxo.kopet.api.domain.shelter.ShelterResponse
+import br.com.ocartaxo.kopet.api.domain.shelter.ShelterRequest
+import br.com.ocartaxo.kopet.api.domain.shelter.ShelterService
+import br.com.ocartaxo.kopet.api.domain.shelter.ShelterUpdateRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable

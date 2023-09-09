@@ -1,7 +1,7 @@
 package br.com.ocartaxo.kopet.api.domain.shelter
 
-import br.com.ocartaxo.api.domain.location.toDTO
-import br.com.ocartaxo.api.domain.location.toEntity
+import br.com.ocartaxo.kopet.api.domain.location.toDTO
+import br.com.ocartaxo.kopet.api.domain.location.toEntity
 
 fun ShelterRequest.toEntity() = Shelter(
     name = this.name,

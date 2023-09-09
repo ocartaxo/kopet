@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.pet
 
-import br.com.ocartaxo.api.domain.shelter.Shelter
+import br.com.ocartaxo.kopet.api.domain.shelter.Shelter
 
 fun PetRequest.toEntity(s: Shelter) = Pet(
     name = this.name,

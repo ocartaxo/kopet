@@ -1,7 +1,7 @@
 package br.com.ocartaxo.kopet.api.domain.pet
 
 
-import br.com.ocartaxo.api.domain.shelter.Shelter
+import br.com.ocartaxo.kopet.api.domain.shelter.Shelter
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
 

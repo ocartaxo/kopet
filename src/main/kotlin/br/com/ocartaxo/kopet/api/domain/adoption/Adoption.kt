@@ -1,7 +1,7 @@
 package br.com.ocartaxo.kopet.api.domain.adoption
 
-import br.com.ocartaxo.api.domain.pet.Pet
-import br.com.ocartaxo.api.domain.tutor.Tutor
+import br.com.ocartaxo.kopet.api.domain.pet.Pet
+import br.com.ocartaxo.kopet.api.domain.tutor.Tutor
 import jakarta.persistence.*
 import lombok.NoArgsConstructor
 import java.time.LocalDateTime

@@ -1,8 +1,8 @@
 package br.com.ocartaxo.kopet.api.controller
 
-import br.com.ocartaxo.api.domain.pet.PetRequest
-import br.com.ocartaxo.api.domain.pet.PetService
-import br.com.ocartaxo.api.domain.pet.PetUpdateRequest
+import br.com.ocartaxo.kopet.api.domain.pet.PetRequest
+import br.com.ocartaxo.kopet.api.domain.pet.PetService
+import br.com.ocartaxo.kopet.api.domain.pet.PetUpdateRequest
 import jakarta.transaction.Transactional
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
