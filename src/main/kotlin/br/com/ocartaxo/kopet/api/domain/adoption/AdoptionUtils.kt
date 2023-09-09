@@ -2,8 +2,7 @@ package br.com.ocartaxo.kopet.api.domain.adoption
 
 import br.com.ocartaxo.kopet.api.domain.pet.Pet
 
-fun br.com.ocartaxo.kopet.api.domain.adoption.Adoption.toDTO() =
-    br.com.ocartaxo.kopet.api.domain.adoption.AdoptionResponse(
+fun Adoption.toDTO() = AdoptionResponse(
         id = this.id!!,
         date = this.date,
         tutorName = this.tutor.name,

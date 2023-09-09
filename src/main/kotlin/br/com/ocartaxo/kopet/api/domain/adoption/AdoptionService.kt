@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class AdoptionService(
-    private val adoptionsRepository: br.com.ocartaxo.kopet.api.domain.adoption.AdoptionsRepository,
+    private val adoptionsRepository: AdoptionsRepository,
     private val petsRepository: PetsRepository,
     private val tutorsRepository: TutorsRepository
 ) {
-    fun adopt(request: br.com.ocartaxo.kopet.api.domain.adoption.AdoptionRequest): br.com.ocartaxo.kopet.api.domain.adoption.AdoptionResponse {
+    fun adopt(request: AdoptionRequest): AdoptionResponse {
         val pet = petsRepository.findById(request.petId)
             .orElseThrow { IllegalArgumentException("Pet não encontrado!") }
 
@@ -22,7 +22,7 @@ class AdoptionService(
             .orElseThrow { IllegalArgumentException("Tutor não encontrado!") }
 
 
-        val adoption = br.com.ocartaxo.kopet.api.domain.adoption.Adoption(pet = pet, tutor = tutor)
+        val adoption = Adoption(pet = pet, tutor = tutor)
         adoptionsRepository.save(adoption)
 
         pet.adopt()
