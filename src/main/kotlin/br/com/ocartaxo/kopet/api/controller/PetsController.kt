@@ -4,6 +4,7 @@ import br.com.ocartaxo.kopet.api.domain.pet.PetRequest
 import br.com.ocartaxo.kopet.api.domain.pet.PetService
 import br.com.ocartaxo.kopet.api.domain.pet.PetUpdateRequest
 import jakarta.transaction.Transactional
+import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
 import org.springframework.data.domain.Sort
@@ -19,7 +20,7 @@ class PetsController(private val service: PetService) {
     @PostMapping
     @Transactional
     fun register(
-        @RequestBody request: PetRequest,
+        @RequestBody @Valid request: PetRequest,
         builder: UriComponentsBuilder
     ): ResponseEntity<Any> {
         val response = service.register(request)
@@ -39,7 +40,7 @@ class PetsController(private val service: PetService) {
 
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
     @Transactional
-    fun update(@RequestBody request: PetUpdateRequest) = ResponseEntity.ok(service.update(request))
+    fun update(@RequestBody @Valid request: PetUpdateRequest) = ResponseEntity.ok(service.update(request))
 
     @DeleteMapping("/{id}")
     @Transactional
