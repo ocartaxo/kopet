@@ -9,7 +9,7 @@ possam escolher um animal de estimação cadastrados na plataforma de acordo com
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **Adopet-API**
-| :label: Tecnologias | Kotlin, Spring Boot, Spring JPA, PostgresSQL, Flyway, Lombok
+| :label: Tecnologias | Kotlin, Spring Boot, Spring JPA, PostgresSQL, Flyway
 
 ## Detalhes do projeto
 
