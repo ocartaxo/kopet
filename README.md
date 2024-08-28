@@ -24,4 +24,3 @@ através do Trello. O histórico de desenvolvimento das funcionalidades ao longo
 - [Semana 1](https://github.com/ocartaxo/kopet/commits/week1)
 - [Semana 2](https://github.com/ocartaxo/kopet/commits/week2)
 - [Semana 3 & 4](https://github.com/ocartaxo/kopet/commits/week3)
-
