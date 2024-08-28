@@ -1,4 +1,4 @@
-package br.com.ocartaxo.adopetapi
+package br.com.ocartaxo.kopet.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class AdopetApiApplication
 
 fun main(args: Array<String>) {
-    runApplication<AdopetApiApplication>(*args)
+    runApplication<br.com.ocartaxo.kopet.api.AdopetApiApplication>(*args)
 }

@@ -1,0 +1,28 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/adopet
+    username: postgres
+    password: A9&L4;Mb#
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: on
+    properties:
+      hibernate:
+        format_sql: true
+
+
+  flyway:
+    driver-class-name: org.postgresql.Driver
+    user: postgres
+    password: A9&L4;Mb#
+    url: jdbc:postgresql://localhost:5432/adopet
+
+application:
+  security:
+    jwt:
+      secret-key: 25432A462D4A614E645267556B58703273357638792F413F4428472B4B625065
+      expiration: 3600000
+      refresh-token:
+        expiration: 86400000

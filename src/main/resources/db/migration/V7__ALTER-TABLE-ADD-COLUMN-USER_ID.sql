@@ -1,0 +1,2 @@
+ALTER TABLE tutores ADD COLUMN user_id SERIAL REFERENCES usuarios(id) NOT NULL;
+ALTER TABLE abrigos ADD COLUMN user_id SERIAL REFERENCES usuarios(id) NOT NULL;
