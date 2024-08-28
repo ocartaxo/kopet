@@ -1,4 +1,4 @@
-# Adopet-API
+# Kopet-API
 
 O objetivo final deste projeto é facilitar a adoção de pets através de uma plataforma web na qual tutores interessados
 possam escolher um animal de estimação cadastrados na plataforma de acordo com sua preferências e necessidades.
