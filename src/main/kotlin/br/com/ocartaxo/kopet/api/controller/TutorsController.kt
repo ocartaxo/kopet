@@ -19,7 +19,6 @@ import org.springframework.web.util.UriComponentsBuilder
 class TutorsController(private val service: TutorService) {
 
     @PostMapping
-    @Transactional
     fun register(
         @RequestBody @Valid request: TutorRequest,
         builder: UriComponentsBuilder
@@ -32,17 +31,14 @@ class TutorsController(private val service: TutorService) {
     }
 
     @GetMapping
-    @Cacheable("tutores")
     fun list(
         @PageableDefault(size=10, sort=["name"], direction= Sort.Direction.ASC) pageable: Pageable
     ) = ResponseEntity.ok(service.list(pageable))
 
     @GetMapping("/{id}")
-    @Cacheable("tutores")
     fun show(@PathVariable id: Int) = service.show(id)
 
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
-    @Transactional
     fun update(request: TutorUpdateRequest) = service.update(request)
 
     @DeleteMapping("/{id}")
