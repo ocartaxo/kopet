@@ -7,11 +7,9 @@ import jakarta.persistence.*
 data class Token(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null,
-    @Column(name = "token_value")
     val tokenValue: String,
-    @Column(name = "token_type")
     @Enumerated(value = EnumType.STRING)
-    val tokenType: TokenType? = TokenType.BEARER,
+    val tokenType: TokenType = TokenType.BEARER,
     var revoked: Boolean = false,
     var expired: Boolean = false,
     @ManyToOne(fetch = FetchType.LAZY)
