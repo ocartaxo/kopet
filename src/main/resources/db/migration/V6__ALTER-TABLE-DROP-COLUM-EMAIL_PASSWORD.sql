@@ -1,4 +1,4 @@
-ALTER TABLE tutores DROP COLUMN email;
-ALTER TABLE tutores DROP COLUMN password;
+ALTER TABLE tutor DROP COLUMN email;
+ALTER TABLE tutor DROP COLUMN password;
 
-ALTER TABLE abrigos DROP COLUMN email;
+ALTER TABLE abrigo DROP COLUMN email;

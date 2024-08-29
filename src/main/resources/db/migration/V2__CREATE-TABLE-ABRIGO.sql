@@ -1,4 +1,4 @@
-CREATE TABLE abrigos
+CREATE TABLE abrigo
 (
     id         SERIAL PRIMARY KEY,
     name       VARCHAR(255) NOT NULL,

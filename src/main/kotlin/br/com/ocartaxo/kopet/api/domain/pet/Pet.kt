@@ -3,11 +3,9 @@ package br.com.ocartaxo.kopet.api.domain.pet
 
 import br.com.ocartaxo.kopet.api.domain.shelter.Shelter
 import jakarta.persistence.*
-import lombok.NoArgsConstructor
 
 @Entity
-@Table(name="pets")
-@NoArgsConstructor
+@Table(name="pet")
 data class Pet(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null,

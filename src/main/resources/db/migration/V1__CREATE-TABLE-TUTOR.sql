@@ -1,4 +1,4 @@
-CREATE TABLE tutores
+CREATE TABLE tutor
 (
     id         SERIAL PRIMARY KEY,
     email      VARCHAR(255)  NOT NULL,

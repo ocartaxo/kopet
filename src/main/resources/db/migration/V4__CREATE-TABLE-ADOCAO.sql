@@ -1,4 +1,4 @@
-CREATE TABLE adocoes
+CREATE TABLE adocao
 (
     id   SERIAL NOT NULL,
     date TIMESTAMP NOT NULL,
@@ -7,6 +7,6 @@ CREATE TABLE adocoes
     tutor_id SERIAL NOT NULL,
 
     PRIMARY KEY(id),
-    FOREIGN KEY(pet_id) REFERENCES pets(id),
-    FOREIGN KEY(tutor_id) REFERENCES tutores(id)
+    FOREIGN KEY(pet_id) REFERENCES pet(id),
+    FOREIGN KEY(tutor_id) REFERENCES tutor(id)
 )

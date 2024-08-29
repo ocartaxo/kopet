@@ -4,7 +4,6 @@ import br.com.ocartaxo.kopet.api.domain.user.User
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "tokens")
 data class Token(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null,

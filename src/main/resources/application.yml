@@ -1,9 +1,9 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/adopet
+    url: jdbc:postgresql://localhost:5433/adopet
     username: postgres
-    password: A9&L4;Mb#
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -16,8 +16,8 @@ spring:
   flyway:
     driver-class-name: org.postgresql.Driver
     user: postgres
-    password: A9&L4;Mb#
-    url: jdbc:postgresql://localhost:5432/adopet
+    password: postgres
+    url: jdbc:postgresql://localhost:5433/adopet
 
 application:
   security:
