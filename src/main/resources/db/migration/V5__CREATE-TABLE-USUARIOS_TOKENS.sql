@@ -11,8 +11,8 @@ CREATE TABLE usuario
 CREATE TABLE token
 (
     id SERIAL PRIMARY KEY,
-    tokenValue VARCHAR(500) NOT NULL,
-    tokenType VARCHAR(15) NOT NULL,
+    token_value VARCHAR(500) NOT NULL,
+    token_type VARCHAR(15) NOT NULL,
     user_id SERIAL NOT NULL REFERENCES usuario(id),
 
     revoked BOOLEAN,
