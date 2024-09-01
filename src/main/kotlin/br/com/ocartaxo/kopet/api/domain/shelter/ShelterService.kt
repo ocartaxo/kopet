@@ -9,9 +9,9 @@ class ShelterService(
     private val shelterRepository: ShelterRepository,
     private val registrationService: RegistrationService,
 ) {
-    fun register(request: ShelterRequest): ShelterResponse {
+    fun register(request: ShelterRequest): ShelterSummaryResponse {
         val shelter = request.toEntity(registrationService.register(request.toRegisterRequest()))
-        return shelter.toDTO()
+        return shelter.toSummaryDTO()
     }
 
     fun list(pageable: Pageable) = shelterRepository.findAll(pageable).map(Shelter::toSummaryDTO)

@@ -1,8 +1,8 @@
 package br.com.ocartaxo.kopet.api.controller
 
-import br.com.ocartaxo.kopet.api.domain.shelter.ShelterResponse
 import br.com.ocartaxo.kopet.api.domain.shelter.ShelterRequest
 import br.com.ocartaxo.kopet.api.domain.shelter.ShelterService
+import br.com.ocartaxo.kopet.api.domain.shelter.ShelterSummaryResponse
 import br.com.ocartaxo.kopet.api.domain.shelter.ShelterUpdateRequest
 import jakarta.transaction.Transactional
 import jakarta.validation.Valid
@@ -23,9 +23,9 @@ class SheltersController(private val service: ShelterService) {
     fun register(
         @RequestBody @Valid request: ShelterRequest,
         builder: UriComponentsBuilder
-    ): ResponseEntity<ShelterResponse> {
+    ): ResponseEntity<ShelterSummaryResponse> {
         val response = service.register(request)
-        val uri = builder.path("/api/abrigos/${response.id}").build().toUri()
+        val uri = builder.path("/api/abrigos/${response}").build().toUri()
         return ResponseEntity.created(uri).body(response)
     }
 
