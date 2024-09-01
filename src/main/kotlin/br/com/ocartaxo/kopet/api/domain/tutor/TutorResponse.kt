@@ -17,5 +17,6 @@ data class TutorResponse(
     val about: String?,
     @JsonProperty("foto")
     val image: String?,
-    val createdOn: LocalDateTime?
+    val createdOn: LocalDateTime?,
+    val updateOn: LocalDateTime?
 )
