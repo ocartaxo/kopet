@@ -2,7 +2,6 @@ package br.com.ocartaxo.kopet.api.infra.security
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.io.Decoders
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
@@ -28,7 +27,7 @@ class JwtService(
         return extractClaims(token, Claims::getSubject)
     }
 
-    fun extractExpirationTime(token: String): Long{
+    fun extractExpirationTime(token: String): Long {
         return extractClaims(token, Claims::getExpiration).time * 1000
     }
 
@@ -51,9 +50,9 @@ class JwtService(
 
     fun generateRefreshToken(userDetails: UserDetails) = buildToken(mapOf(), userDetails, refreshTokenExpirationTime)
 
-    fun isTokenValid(token: String, userDetails: UserDetails): Boolean{
+    fun isTokenValid(token: String, userDetails: UserDetails): Boolean {
         val username = extractUsername(token)
-        return (username.equals(userDetails.username)) && !isTokenExpired(token)
+        return (username == userDetails.username) && !isTokenExpired(token)
     }
 
     private fun buildToken(
@@ -62,14 +61,16 @@ class JwtService(
         expiration: Long
     ): String {
 
+        val issueDate = Date(System.currentTimeMillis())
+
         return Jwts
             .builder()
-            .setIssuer(issuer)
-            .setClaims(extraClaims)
-            .setSubject(userDetails.username)
-            .setIssuedAt(Date(System.currentTimeMillis()))
-            .setExpiration(Date(System.currentTimeMillis() + expiration))
-            .signWith(signInKey, SignatureAlgorithm.HS256)
+            .issuer(issuer)
+            .issuedAt(issueDate)
+            .claims(extraClaims)
+            .subject(userDetails.username)
+            .expiration(tokenExpirationDate(issueDate, expiration))
+            .signWith(signInKey)
             .compact()
 
     }
@@ -87,14 +88,16 @@ class JwtService(
         token: String
     ): Claims {
         return Jwts
-            .parserBuilder()
+            .parser()
+            .verifyWith(signInKey)
             .requireIssuer(issuer)
-            .setSigningKey(signInKey)
             .build()
-            .parseClaimsJws(token)
-            .body
+            .parseSignedClaims(token)
+            .payload
+
     }
 
-
+    private fun tokenExpirationDate(issuedAt: Date, tokenDurationMillis: Long) =
+        Date(issuedAt.toInstant().plusMillis(tokenDurationMillis).toEpochMilli())
 
 }
