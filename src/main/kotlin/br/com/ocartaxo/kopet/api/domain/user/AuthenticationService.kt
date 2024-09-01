@@ -3,22 +3,22 @@ package br.com.ocartaxo.kopet.api.domain.user
 import br.com.ocartaxo.kopet.api.domain.token.Token
 import br.com.ocartaxo.kopet.api.domain.token.TokenRepository
 import br.com.ocartaxo.kopet.api.infra.security.JwtService
+import org.slf4j.LoggerFactory
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
 class AuthenticationService(
     private val authenticationManager: AuthenticationManager,
-    private val passwordEncoder: PasswordEncoder,
     private val jwtService: JwtService,
-    private val usersRepository: UsersRepository,
     private val tokenRepository: TokenRepository,
 ) {
-
+    private val logger = LoggerFactory.getLogger(this.javaClass)
     fun authenticate(request: AuthenticationRequest): AuthenticationResponse {
+        logger.info("I=Autenticando o usuário ${request.username}")
+
         val authentication = authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(
                 request.username,
@@ -26,15 +26,10 @@ class AuthenticationService(
             )
         )
 
-
-        val user = usersRepository.findByEmail(request.username)
-            .orElseThrow { IllegalArgumentException("Login e/ou senha incorretos!") }
-
-        user.password = passwordEncoder.encode(request.password)
+       val user = authentication.principal as User
 
         val jwtToken = jwtService.generateToken(user)
         val refreshToken = jwtService.generateRefreshToken(user)
-
 
         user.revokeTokens()
         saveToken(user, jwtToken)
