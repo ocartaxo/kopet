@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails
 
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 data class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null,
@@ -15,7 +15,7 @@ data class User(
     var email: String,
     @Column(name = "password")
     @get:JvmName("userPassword")
-    var password: String,
+    val password: String,
 
     @Column(name="profile")
     @Enumerated(value = EnumType.STRING)
@@ -25,9 +25,9 @@ data class User(
 
 ) : UserDetails {
     override fun getAuthorities(): Collection<GrantedAuthority> = role.authorities()
-    override fun getPassword() = this.email
+    override fun getUsername() = this.email
 
-    override fun getUsername() = this.password
+    override fun getPassword() = this.password
 
     override fun isAccountNonExpired() = true
 
