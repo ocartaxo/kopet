@@ -29,7 +29,7 @@ class SecurityConfig(
     private val POST_WHITELIST = arrayOf(
         "/api/tutores",
         "/api/abrigos",
-        "/api/authenticate"
+        "/api/auth"
     )
 
     @Bean
