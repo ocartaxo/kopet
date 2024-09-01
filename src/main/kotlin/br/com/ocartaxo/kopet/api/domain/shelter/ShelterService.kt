@@ -1,16 +1,16 @@
 package br.com.ocartaxo.kopet.api.domain.shelter
 
-import br.com.ocartaxo.kopet.api.infra.security.JwtService
+import br.com.ocartaxo.kopet.api.domain.user.RegistrationService
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
 class ShelterService(
     private val shelterRepository: ShelterRepository,
-    private val jwtService: JwtService,
+    private val registrationService: RegistrationService,
 ) {
     fun register(request: ShelterRequest): ShelterResponse {
-        val shelter = request.toEntity()
+        val shelter = request.toEntity(registrationService.register(request.toRegisterRequest()))
         return shelter.toDTO()
     }
 
