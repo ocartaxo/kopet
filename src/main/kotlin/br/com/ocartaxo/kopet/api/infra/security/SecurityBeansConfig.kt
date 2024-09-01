@@ -27,8 +27,8 @@ class SecurityBeansConfig(
 
         return UserDetailsService { username ->
 
-            logger.info("Procurando pelo usuário `$username`")
-            repository.findByEmail(username).orElseThrow { UsernameNotFoundException(username) }
+            logger.info("I=Buscando usuário `$username`")
+            repository.findUserByEmail(username).orElseThrow { UsernameNotFoundException(username) }
         }
     }
 
