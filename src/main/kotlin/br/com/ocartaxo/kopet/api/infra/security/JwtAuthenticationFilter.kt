@@ -1,5 +1,6 @@
 package br.com.ocartaxo.kopet.api.infra.security
 
+import br.com.ocartaxo.kopet.api.infra.error.ValidationException
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -32,7 +33,9 @@ class JwtAuthenticationFilter(
             val username = jwtService.extractUsername(jwt)
             val userDetails = userDetailsService.loadUserByUsername(username)
 
-            logger.info("Autenticando o usuário ${userDetails.username}")
+            if (!jwtService.isTokenValid(jwt, userDetails)){
+                throw ValidationException("Token inválido")
+            }
 
             val authentication = UsernamePasswordAuthenticationToken(
                 userDetails.username,
@@ -55,6 +58,7 @@ class JwtAuthenticationFilter(
 
     private fun extractToken(request: HttpServletRequest): String? {
         val header = request.getHeader("Authorization")
+
 
         return header?.replace("Bearer ", "")
     }
