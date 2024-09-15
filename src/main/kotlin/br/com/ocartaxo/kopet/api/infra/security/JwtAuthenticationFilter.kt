@@ -1,6 +1,7 @@
 package br.com.ocartaxo.kopet.api.infra.security
 
 import br.com.ocartaxo.kopet.api.infra.error.ValidationException
+import io.swagger.v3.oas.models.PathItem.HttpMethod
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -17,6 +18,11 @@ class JwtAuthenticationFilter(
     private val userDetailsService: UserDetailsService
 ) : OncePerRequestFilter() {
 
+    private val WHITE_LIST = arrayOf(
+        "/api/tutores",
+        "/api/abrigos",
+        "/api/auth"
+    )
 
     override fun doFilterInternal(
         request: HttpServletRequest,
@@ -56,10 +62,12 @@ class JwtAuthenticationFilter(
         filterChain.doFilter(request, response)
     }
 
+    override fun shouldNotFilter(request: HttpServletRequest): Boolean {
+        return WHITE_LIST.contains(request.requestURI) and (HttpMethod.POST.name == request.method)
+    }
+
     private fun extractToken(request: HttpServletRequest): String? {
         val header = request.getHeader("Authorization")
-
-
         return header?.replace("Bearer ", "")
     }
 
