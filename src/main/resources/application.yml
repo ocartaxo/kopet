@@ -1,9 +1,13 @@
+server:
+  port: ${APP_PORT:8080}
 
 spring:
+  application:
+    name: kopet-api
   datasource:
-    url: jdbc:postgresql://localhost:5433/adopet
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/adopet
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -15,9 +19,9 @@ spring:
 
   flyway:
     driver-class-name: org.postgresql.Driver
-    user: postgres
-    password: postgres
-    url: jdbc:postgresql://localhost:5433/adopet
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/adopet
 
 application:
   security:
