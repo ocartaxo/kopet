@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class AdopetApiApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<br.com.ocartaxo.kopet.api.AdopetApiApplication>(*args)
+    runApplication<br.com.ocartaxo.kopet.api.Application>(*args)
 }
