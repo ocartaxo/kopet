@@ -9,10 +9,8 @@ services:
       - adopet_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: adopet
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
 volumes:
   adopet_data:
-
