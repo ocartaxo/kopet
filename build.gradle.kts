@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
     id("org.springframework.boot") version "3.0.6"
@@ -10,7 +11,7 @@ plugins {
 
 group = "br.com.ocartaxo.kopet.api"
 version = "0.0.1-SNAPSHOT"
-val mainClassName = "AdopetApiApplication"
+val mainClassName = "ApplicationKt"
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 configurations {
@@ -63,8 +64,8 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.withType<Jar> {
-    manifest {
-        attributes("Main-Class" to "${project.group}.$mainClassName")
-    }
-}
+//tasks.withType<Jar> {
+//    manifest {
+//        attributes("Main-Class" to "${project.group}.$mainClassName")
+//    }
+//}
