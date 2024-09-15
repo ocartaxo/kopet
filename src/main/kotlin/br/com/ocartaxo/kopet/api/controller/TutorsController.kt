@@ -6,6 +6,7 @@ import br.com.ocartaxo.kopet.api.domain.tutor.TutorService
 import br.com.ocartaxo.kopet.api.domain.tutor.TutorUpdateRequest
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.security.SecurityRequirement
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
@@ -37,20 +38,20 @@ class TutorsController(private val service: TutorService) {
 
 
     @GetMapping
-    @Operation(summary = "Lista os tutores")
+    @Operation(summary = "Lista os tutores", security = [SecurityRequirement(name = "bearer")])
     fun list(
-        @PageableDefault(size=10, sort=["name"], direction= Sort.Direction.ASC) pageable: Pageable
+        @PageableDefault(size=10) pageable: Pageable
     ) = ResponseEntity.ok(service.list(pageable))
 
     @GetMapping("/{id}")
-    @Operation(summary = "Exibe informações de um tutor")
+    @Operation(summary = "Exibe informações de um tutor", security = [SecurityRequirement(name = "bearer")])
     fun show(@PathVariable @Parameter(description = "id do tutor") id: Int) = service.show(id)
 
-    @Operation(description = "Atualiza informações de um tutor")
+    @Operation(description = "Atualiza informações de um tutor", security = [SecurityRequirement(name = "bearer")])
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
     fun update(request: TutorUpdateRequest) = service.update(request)
 
-    @Operation(description = "Remove um tutor da base de dados")
+    @Operation(description = "Remove um tutor da base de dados", security = [SecurityRequirement(name = "bearer")])
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id: Int): ResponseEntity<Unit> {
         service.delete(id)

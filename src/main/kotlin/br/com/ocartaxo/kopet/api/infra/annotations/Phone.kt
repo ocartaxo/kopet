@@ -1,4 +1,4 @@
-package br.com.alura.challenge.adopet.infra.annotations
+package br.com.ocartaxo.kopet.api.infra.annotations
 
 import jakarta.validation.Constraint
 
