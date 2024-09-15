@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   postgres:
     image: "postgres:16-alpine"
@@ -12,5 +10,15 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
+  adopet-api:
+    image: "docker.io/library/adopet-api:0.0.1-SNAPSHOT"
+    environment:
+      POSTGRES_DB: adopet
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      SERVER_PORT: 9090
+    depends_on:
+      - postgres
+
 volumes:
-  adopet_data:
+  - adopet_data:
