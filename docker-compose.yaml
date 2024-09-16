@@ -15,7 +15,7 @@ services:
 
   adopet-api:
     container_name: kopet-api
-    image: docker.io/library/adopet-api:0.0.1-SNAPSHOT
+    image: docker.io/library/adopet-api:0.0.1-SNAPSHOT # gerado usando a task gradlew bootBuildImage
     environment:
       POSTGRES_DB: adopet
       POSTGRES_USER: postgres
