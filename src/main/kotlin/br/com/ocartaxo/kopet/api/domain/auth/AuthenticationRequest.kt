@@ -1,4 +1,4 @@
-package br.com.ocartaxo.kopet.api.domain.user
+package br.com.ocartaxo.kopet.api.domain.auth
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import jakarta.validation.constraints.NotBlank

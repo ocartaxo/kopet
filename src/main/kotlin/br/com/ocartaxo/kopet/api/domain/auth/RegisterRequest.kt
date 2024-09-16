@@ -1,4 +1,6 @@
-package br.com.ocartaxo.kopet.api.domain.user
+package br.com.ocartaxo.kopet.api.domain.auth
+
+import br.com.ocartaxo.kopet.api.domain.user.Role
 
 data class RegisterRequest(
     val username: String,

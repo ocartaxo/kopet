@@ -1,7 +1,8 @@
-package br.com.ocartaxo.kopet.api.domain.user
+package br.com.ocartaxo.kopet.api.domain.auth
 
 import br.com.ocartaxo.kopet.api.domain.token.Token
 import br.com.ocartaxo.kopet.api.domain.token.TokenRepository
+import br.com.ocartaxo.kopet.api.domain.user.User
 import br.com.ocartaxo.kopet.api.infra.security.JwtService
 import org.slf4j.LoggerFactory
 import org.springframework.security.authentication.AuthenticationManager
@@ -16,6 +17,7 @@ class AuthenticationService(
     private val tokenRepository: TokenRepository,
 ) {
     private val logger = LoggerFactory.getLogger(this.javaClass)
+
     fun authenticate(request: AuthenticationRequest): AuthenticationResponse {
         logger.info("I=Autenticando o usuário ${request.username}")
 
@@ -44,11 +46,14 @@ class AuthenticationService(
 
     }
 
+    fun register(request: RegisterRequest): AuthenticationResponse? {
+        return null
+    }
+
     private fun saveToken(user: User, jwtToken: String) {
         val token = Token(user = user, tokenValue = jwtToken)
         user.addToken(token)
         tokenRepository.save(token)
     }
-
 
 }
