@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.shelter
 
-import jakarta.transaction.Transactional
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service

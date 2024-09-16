@@ -1,6 +1,6 @@
 package br.com.ocartaxo.kopet.api.domain.tutor
 
-import jakarta.transaction.Transactional
+import org.springframework.transaction.annotation.Transactional
 import org.slf4j.LoggerFactory
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Page
