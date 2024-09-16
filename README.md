@@ -24,3 +24,15 @@ através do Trello. O histórico de desenvolvimento das funcionalidades ao longo
 - [Semana 1](https://github.com/ocartaxo/kopet/commits/week1)
 - [Semana 2](https://github.com/ocartaxo/kopet/commits/week2)
 - [Semana 3 & 4](https://github.com/ocartaxo/kopet/commits/week3)
+
+
+# Instruções
+
+```bash
+# cria imagem da API
+gradlew bootBuildImage 
+# inacializa os servicos. 
+docker compose up -d # caso o compose esteja instalado de forma standalone docker-compose 
+```
+
+Acesse o endpoint `http://localhost:9090/swagger-ui/index.html` para visualizar os endpoints disponíveis
