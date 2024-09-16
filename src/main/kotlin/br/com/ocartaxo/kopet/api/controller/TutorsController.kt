@@ -1,38 +1,21 @@
 package br.com.ocartaxo.kopet.api.controller
 
-import br.com.ocartaxo.kopet.api.domain.tutor.TutorRequest
-import br.com.ocartaxo.kopet.api.domain.tutor.TutorResponse
 import br.com.ocartaxo.kopet.api.domain.tutor.TutorService
 import br.com.ocartaxo.kopet.api.domain.tutor.TutorUpdateRequest
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import io.swagger.v3.oas.annotations.tags.Tag
-import jakarta.validation.Valid
 import org.springframework.data.domain.Pageable
 import org.springframework.data.web.PageableDefault
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.util.UriComponentsBuilder
 
 
 @RestController
 @RequestMapping("/api/tutores", produces = [MediaType.APPLICATION_JSON_VALUE])
 @Tag(name = "Tutores", description = "CRUD para tutores")
 class TutorsController(private val service: TutorService) {
-
-    @PostMapping
-    @Operation(summary = "Cria um novo tutor")
-    fun register(
-        @RequestBody @Valid request: TutorRequest,
-        builder: UriComponentsBuilder
-    ): ResponseEntity<TutorResponse>{
-
-        val response = service.register(request)
-        val uri = builder.path("/api/tutores/${response.id}").build().toUri()
-
-        return ResponseEntity.created(uri).body(response)
-    }
 
 
     @GetMapping

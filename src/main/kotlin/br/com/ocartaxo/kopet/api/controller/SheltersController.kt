@@ -20,16 +20,6 @@ import org.springframework.web.util.UriComponentsBuilder
 @Tag(name = "Abrigos", description = "API para abrigos")
 class SheltersController(private val service: ShelterService) {
 
-    @PostMapping
-    fun register(
-        @RequestBody @Valid request: ShelterRequest,
-        builder: UriComponentsBuilder
-    ): ResponseEntity<ShelterSummaryResponse> {
-        val response = service.register(request)
-        val uri = builder.path("/api/abrigos/${response}").build().toUri()
-        return ResponseEntity.created(uri).body(response)
-    }
-
     @Operation(
         summary = "Lista informações dos abrigos",
         description = "Lista informações sumarizadas dos abrigos cadastrados de forma paginada"
