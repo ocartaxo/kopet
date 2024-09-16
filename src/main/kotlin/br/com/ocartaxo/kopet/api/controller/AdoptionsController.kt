@@ -3,7 +3,6 @@ package br.com.ocartaxo.kopet.api.controller
 import br.com.ocartaxo.kopet.api.domain.adoption.AdoptionRequest
 import br.com.ocartaxo.kopet.api.domain.adoption.AdoptionResponse
 import br.com.ocartaxo.kopet.api.domain.adoption.AdoptionService
-import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -14,7 +13,6 @@ import org.springframework.web.util.UriComponentsBuilder
 class AdoptionsController(private val service: AdoptionService) {
 
     @PostMapping
-    @Transactional
     fun adopt(
         @RequestBody @Valid request: AdoptionRequest,
         builder: UriComponentsBuilder
@@ -26,7 +24,6 @@ class AdoptionsController(private val service: AdoptionService) {
     }
 
     @DeleteMapping
-    @Transactional
     fun deleteAdoption(id: Int): ResponseEntity<Unit> {
         service.delete(id)
         return ResponseEntity.noContent().build()

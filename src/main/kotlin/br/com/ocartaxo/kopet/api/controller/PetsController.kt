@@ -3,7 +3,6 @@ package br.com.ocartaxo.kopet.api.controller
 import br.com.ocartaxo.kopet.api.domain.pet.PetRequest
 import br.com.ocartaxo.kopet.api.domain.pet.PetService
 import br.com.ocartaxo.kopet.api.domain.pet.PetUpdateRequest
-import jakarta.transaction.Transactional
 import jakarta.validation.Valid
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.Pageable
@@ -18,7 +17,6 @@ import org.springframework.web.util.UriComponentsBuilder
 class PetsController(private val service: PetService) {
 
     @PostMapping
-    @Transactional
     fun register(
         @RequestBody @Valid request: PetRequest,
         builder: UriComponentsBuilder
@@ -39,11 +37,9 @@ class PetsController(private val service: PetService) {
     fun show(@PathVariable id: Int) = ResponseEntity.ok(service.show(id))
 
     @RequestMapping(method = [RequestMethod.PUT, RequestMethod.PATCH])
-    @Transactional
     fun update(@RequestBody @Valid request: PetUpdateRequest) = ResponseEntity.ok(service.update(request))
 
     @DeleteMapping("/{id}")
-    @Transactional
     fun delete(@PathVariable id: Int): ResponseEntity<Unit>{
         service.delete(id)
         return ResponseEntity.noContent().build()

@@ -3,6 +3,7 @@ package br.com.ocartaxo.kopet.api.domain.adoption
 import br.com.ocartaxo.kopet.api.domain.pet.PetsRepository
 import br.com.ocartaxo.kopet.api.domain.tutor.TutorsRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class AdoptionService(
@@ -10,6 +11,7 @@ class AdoptionService(
     private val petsRepository: PetsRepository,
     private val tutorsRepository: TutorsRepository
 ) {
+    @Transactional
     fun adopt(request: AdoptionRequest): AdoptionResponse {
         val pet = petsRepository.findById(request.petId)
             .orElseThrow { IllegalArgumentException("Pet não encontrado!") }
@@ -30,6 +32,7 @@ class AdoptionService(
         return adoption.toDTO()
     }
 
+    @Transactional
     fun delete(id: Int) = adoptionsRepository.deleteById(id)
 
 }
